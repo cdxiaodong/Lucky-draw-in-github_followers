@@ -20,9 +20,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests beautifulsoup4
 
-    - name: Run draw_winner.py and save results to output.md
+    - name: Run draw_followers.py and save results to output.md
       run: |
-        python draw_winner.py > output.md
+        python draw_followers.py > output.md
 
     - name: Commit and push results
       run: |
@@ -30,4 +30,4 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add output.md
         git commit -m "Update followers and draw winner"
-        git push
+        git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
