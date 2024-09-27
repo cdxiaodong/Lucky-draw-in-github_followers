@@ -1,8 +1,7 @@
 name: Draw Followers
 
 on:
-  schedule:
-    - cron: '0 */48 * * *'  # 每 48 小时运行一次
+  workflow_dispatch:
 
 jobs:
   draw_followers:
@@ -21,9 +20,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests beautifulsoup4
 
-    - name: Run draw_followers.py and save results to output.md
+    - name: Run draw_winner.py and save results to output.md
       run: |
-        python draw_followers.py > output.md
+        python draw_winner.py > output.md
 
     - name: Commit and push results
       run: |
